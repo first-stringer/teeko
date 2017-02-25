@@ -4,14 +4,13 @@
 (require math/array)
 
 ;; 1a. DATA DEFINITIONS
-;; #1: A Teeko is a structure: (make-Teeko (make-vector 25)).
+;; #1: A Teeko is a structure: (make-Teeko (make-array #(5 5) 'X))
 (define-struct Teeko [gb] #:transparent)
 ;; 1b. CONSTANT DEFINITIONS
+;;(define WIDTH 1000)
+;;(define HEIGHT 150)
+;;(define EMPTY_SCENE (empty-scene WIDTH HEIGHT))
 
-;;(define tko (make-Teeko #(A B C D E F G H I J K L M N O P Q R S T U V W X Y)))
-
-;;(Teeko-gb tko)
-;;(vector-ref (Teeko-gb tko) 5)
 
 (define tko (make-Teeko (array #[ #['A 'B 'C 'D 'E] 
 				  #['F 'G 'H 'I 'J]
@@ -21,6 +20,9 @@
 
 tko
 
+
+
+
 ;;mya
 ;;(array-indexes-ref mya (array #['#(0 0) '#(1 1)]))
 ;;(define arr (array #[#[1 2] #[10 20]]))
@@ -28,15 +30,20 @@ tko
 ;;(array-indexes-ref arr idxs)
 
 ;; 1c. FUNCTION WISH LIST
+;render
+;tock
+;on-key
 
-;; 2a. FUNCTION SIGNATURE: Teeko -> Teeko
-;; 2b. PURPOSE STATEMENT: To consume a Teeko and display the T
+;; 2a. FUNCTION SIGNATURE: Teeko -> Image
+;; 2b. PURPOSE STATEMENT: To consume a Teeko (tko) and return and image of 
+;; the game board.
 ;; 2c. HEADER
-;; 3a. FUNCTIONAL EXAMPLES
-;; #1: Given: , Expect:
-;; 3b. TESTS
-#;1 
+;;(define (render tko) EMPTY_SCENE)
+;; 3a. FUNCTIONAL EXAMPLES & TESTS
+;;(check-expect (render tko) EMPTY_SCENE)
 ;; 4. TEMPLATE
+;;(define (render tko)
+
 ;; 5. CODE
 
 ;; 2a. FUNCTION SIGNATURE: Teeko -> Teeko
