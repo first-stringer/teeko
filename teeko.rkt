@@ -1,27 +1,51 @@
 #lang racket
 
-;;(require racket/vector)
-(require math/array)
+(require 2htdp/universe)
+(require 2htdp/image)
 
 ;; 1a. DATA DEFINITIONS
 ;; #1: A Teeko is a structure: (make-Teeko (make-array #(5 5) 'X))
-(define-struct Teeko [gb] #:transparent)
+;;(define-struct Teeko [gb] #:transparent)
 ;; 1b. CONSTANT DEFINITIONS
-;;(define WIDTH 1000)
-;;(define HEIGHT 150)
-;;(define EMPTY_SCENE (empty-scene WIDTH HEIGHT))
+(define WIDTH 1000)
+(define HEIGHT 150)
+(define EMPTY_SCENE (empty-scene WIDTH HEIGHT))
+(define GAMEBOARD_FONT_SIZE 12)
 
 
-(define tko (make-Teeko (array #[ #['A 'B 'C 'D 'E] 
-				  #['F 'G 'H 'I 'J]
-				  #['K 'L 'M 'N 'O]
-				  #['P 'Q 'R 'S 'T]
-				  #['U 'V 'W 'X 'Y]])))
+#|(define tko (make-Teeko (array #[ #['A 'B 'C 'D 'E] 
+				    #['F 'G 'H 'I 'J]
+				    #['K 'L 'M 'N 'O]
+				    #['P 'Q 'R 'S 'T]
+				    #['U 'V 'W 'X 'Y]])))
 
 tko
+(define tko   '(A B C D E
+		  F G H I J
+		  K L M N O
+		  P Q R S T 
+		  U V W X Y ))
+tko
+|#
 
+;; 2a. FUNCTION SIGNATURE: 1String String -> Image
+;; 2b. PURPOSE STATEMENT: Consumes a 1String of the character to convert to 
+;; an image and a String of the color for the character and circumscribing
+;; circle; returns an image of the character in a circle of the color 
+;; consumed.
+;; 2c. HEADER
+;; (define (image-chr chr clr) EMPTY_SCENE)
+;; 3. FUNCTIONAL EXAMPLES & TESTS
+;;(check-expect (image-chr 'A "white") (text "A" GAMEBOARD_FONT_SIZE "white"))
+;;(check-expect (image-chr 'A "white") (circle 15 "solid" "white"))
+;; 4. TEMPLATE
+;; (define (image-chr chr clr) 
+;;   (... chr ... clr ...))
+;; 5. CODE
+(define (image-chr chr clr) 
+  (circle 15 "solid" clr))
 
-
+(image-chr "a" "white")
 
 ;;mya
 ;;(array-indexes-ref mya (array #['#(0 0) '#(1 1)]))
@@ -55,13 +79,13 @@ tko
 ;; (define (teeko-prog tko)
 ;;  (... (Teeko-gb tko) ...))
 ;; 5. CODE
-#;(define (teeko-prog tko)
+#|;(define (teeko-prog tko)
 (big-bang tko
 	  [on-tick tock]
 	  [to-draw render]
 	  [on-key handle-ke]
 	  [stop-when stop?]
 	  ))
-
+|#
 
 ;;(teeko-prog (make-Teeko ...))
