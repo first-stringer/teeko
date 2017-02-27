@@ -11,8 +11,12 @@
 (define WIDTH 1000)
 (define HEIGHT 150)
 (define EMPTY_SCENE (empty-scene WIDTH HEIGHT))
-(define GAMEBOARD_FONT_SIZE 12)
-(define EMPTY_SQUARE_TEXT_COLOR "black")
+(define GAMEBOARD_FONT_SIZE 75)
+(define EMPTY_SQUARE_TEXT_COLOR "white")
+(define CIRCLE_RADIUS 55)
+(define CIRCLE_COLOR "black")
+(define CIRCLE_BORDER_RADIUS 65)
+(define CIRCLE_BORDER_COLOR "white")
 
 #|
 tko
@@ -32,8 +36,11 @@ tko
 ;; 2c. HEADER
 (define (image-chr chr clr) EMPTY_SCENE)
 ;; 3. FUNCTIONAL EXAMPLES & TESTS
-(check-expect (image-chr 'A "white")
-              (text "A" GAMEBOARD_FONT_SIZE EMPTY_SQUARE_TEXT_COLOR))
+#;(check-expect (image-chr 'A "white")
+                (text "A" GAMEBOARD_FONT_SIZE EMPTY_SQUARE_TEXT_COLOR))
+(overlay (text "A" GAMEBOARD_FONT_SIZE EMPTY_SQUARE_TEXT_COLOR)
+         (circle CIRCLE_RADIUS "solid"  CIRCLE_COLOR)
+         (circle CIRCLE_BORDER_RADIUS "solid" CIRCLE_BORDER_COLOR))
 ;;(check-expect (image-chr 'A "white") (circle 15 "solid" "white"))
 ;; 4. TEMPLATE
 ;; (define (image-chr chr clr) 
